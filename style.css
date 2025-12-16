@@ -611,9 +611,12 @@ cite {
 }
 
 /* --- Footer --- */
-.site-footer {
+footer {
+  margin: 0 auto;
+
   background-color: var(--color-text-navy);
   color: var(--color-paper);
+  padding: 0 5%;
   padding-top: 5rem;
   padding-bottom: 2rem;
   border-top: 10px solid var(--color-brand-red);
@@ -688,7 +691,7 @@ cite {
     box-shadow: 0 0 10px 5px rgba(255, 255, 0, 0.5);
   }
 
-  .footer-nav {
+  nav {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
