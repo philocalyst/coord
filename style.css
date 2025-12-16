@@ -109,7 +109,8 @@ button,
   font-size: 0.9rem;
 }
 
-.btn:active {
+button:active,
+[role="button"]:active {
   transform: translateY(2px);
 }
 
