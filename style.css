@@ -231,18 +231,16 @@ a {
   color: var(--color-paper);
   overflow: hidden;
 
-  .hero-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr;
-    align-items: end;
-    min-height: 70vh;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: end;
+  min-height: 70vh;
 
-    @media (min-width: 900px) {
-      grid-template-columns: 0.8fr 1.2fr;
-      gap: 2rem;
-    }
+  @media (min-width: 900px) {
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 2rem;
   }
 
   .hero-text {
@@ -296,54 +294,50 @@ a {
     }
   }
 
-  .hero-image-wrapper {
+  img {
     align-self: end;
     justify-self: center;
 
-    .candidate-img {
-      max-height: 80vh;
-      filter: drop-shadow(15px 15px 0px rgba(0, 0, 0, 0.5));
-      mask-image: linear-gradient(to top, black 85%, transparent 100%);
-      transform: translateY(10px);
-      /* Push down slightly */
-    }
+    max-height: 80vh;
+    filter: drop-shadow(15px 15px 0px rgba(0, 0, 0, 0.5));
+    mask-image: linear-gradient(to top, black 85%, transparent 100%);
+    transform: translateY(10px);
+    /* Push down slightly */
   }
 }
 
-/* --- Quote Block --- */
-.quote-block {
+
+blockquote {
   background-color: var(--color-text-navy);
   color: var(--color-paper);
   padding: var(--space-xl) 0;
   text-align: center;
 
-  blockquote {
-    font-size: clamp(1.2rem, 2vw, 1.8rem);
-    font-style: italic;
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.6;
-    position: relative;
-  }
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  font-style: italic;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+  position: relative;
+}
 
-  blockquote::before {
-    content: "“";
-    font-size: 5rem;
-    color: var(--color-brand-red);
-    display: block;
-    line-height: 0.5;
-    margin-bottom: 20px;
-  }
+blockquote::before {
+  content: "“";
+  font-size: 5rem;
+  color: var(--color-brand-red);
+  display: block;
+  line-height: 0.5;
+  margin-bottom: 20px;
+}
 
-  cite {
-    display: block;
-    margin-top: 2rem;
-    font-style: normal;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--color-accent-blue);
-  }
+cite {
+  display: block;
+  margin-top: 2rem;
+  font-style: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-accent-blue);
 }
 
 /* --- Biography --- */
@@ -378,7 +372,7 @@ a {
     justify-content: center;
     align-items: center;
 
-    .photo-frame {
+    .figure {
       background: white;
       padding: 10px 10px 40px 10px;
       /* Polaroid style */
@@ -392,7 +386,7 @@ a {
         filter: grayscale(100%) contrast(120%);
       }
 
-      .caption {
+      figcaption {
         display: block;
         font-family: monospace;
         /* Handwriting vibe */
@@ -485,7 +479,9 @@ a {
     gap: 3rem;
   }
 
-  .principle-card::before {
+  /* Of course, any card that is in the princples grid is a principle card by principle*/
+
+  .principles-grid>div::before {
     content: attr(data-number);
     position: absolute;
     top: -4rem;
@@ -503,7 +499,7 @@ a {
   }
 
 
-  .principle-card {
+  .principles-grid>div {
     background: var(--color-paper);
     padding: 2rem;
     border: 2px solid var(--color-text-navy);
@@ -574,7 +570,7 @@ a {
     flex-direction: column;
   }
 
-  .card-header {
+  h3 {
     background-color: var(--color-text-navy);
     color: var(--color-paper);
     padding: 1rem;
@@ -600,7 +596,7 @@ a {
       margin-bottom: 0.5rem;
     }
 
-    .separator {
+    hr {
       height: 2px;
       background: repeating-linear-gradient(90deg, var(--color-text-navy) 0 5px, transparent 5px 10px);
       margin: 1.5rem 0;
