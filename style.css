@@ -149,9 +149,10 @@ a {
 }
 
 header {
-  background-color: var(--color-paper);
+  background-color: var(--color-text-navy);
   padding: var(--space-md) var(--space-lg);
   border-bottom: 2px solid var(--color-text-navy);
+  color: var(--color-paper);
 
   display: flex;
   align-items: center;
@@ -242,7 +243,7 @@ header {
   }
 
   .hero-text {
-    padding-bottom: clamp(3rem, 8vw, 6rem);
+    padding-bottom: clamp(2rem, 6vw, 3rem);
     padding-top: 3rem;
     position: relative;
     z-index: 2;
@@ -298,8 +299,6 @@ header {
 
     max-height: 80vh;
     filter: drop-shadow(15px 15px 0px rgba(0, 0, 0, 0.5));
-    mask-image: linear-gradient(to top, black 85%, transparent 100%);
-    transform: translateY(10px);
     /* Push down slightly */
   }
 }
