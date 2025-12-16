@@ -310,12 +310,11 @@ a {
 blockquote {
   background-color: var(--color-text-navy);
   color: var(--color-paper);
-  padding: var(--space-xl) 0;
+  padding: var(--space-xl) calc(max(0px, (100vw - 800px) / 2));
   text-align: center;
 
   font-size: clamp(1.2rem, 2vw, 1.8rem);
   font-style: italic;
-  max-width: 800px;
   margin: 0 auto;
   line-height: 1.6;
   position: relative;
