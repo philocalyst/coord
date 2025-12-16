@@ -371,7 +371,7 @@ cite {
     justify-content: center;
     align-items: center;
 
-    .figure {
+    figure {
       background: white;
       padding: 10px 10px 40px 10px;
       /* Polaroid style */
@@ -403,7 +403,7 @@ cite {
       transform: rotate(2deg);
     }
 
-    .photo-frame:hover {
+    figure:hover {
       transform: scale(1.05) rotate(0);
       z-index: 10;
     }
