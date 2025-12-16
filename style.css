@@ -192,7 +192,7 @@ header {
     }
   }
 
-  .site-nav {
+  nav {
     display: flex;
     align-items: center;
     gap: var(--space-md);
@@ -217,7 +217,7 @@ header {
   }
 }
 
-.accent-bar {
+hr {
   height: 1.5rem;
   background-color: var(--color-accent-blue);
   border-bottom: 2px solid var(--color-text-navy);
@@ -456,6 +456,7 @@ cite {
 /* --- Platform Principles --- */
 .platform-intro {
   background-color: var(--color-paper-dim);
+  padding: 5% 5%;
 
   h2 {
     font-size: 3rem;
