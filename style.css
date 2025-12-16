@@ -343,7 +343,7 @@ cite {
 .biography {
   background-color: var(--color-paper);
 
-  .section-title {
+  h2 {
     font-size: 2.5rem;
     margin-bottom: 2rem;
     color: var(--color-brand-red);
@@ -445,7 +445,7 @@ cite {
     opacity: 0.5;
   }
 
-  .section-title {
+  h2 {
     font-size: 2.2rem;
     margin-bottom: 1.5rem;
   }
@@ -460,9 +460,7 @@ cite {
 .platform-intro {
   background-color: var(--color-paper-dim);
 
-
-
-  .section-title {
+  h2 {
     font-size: 3rem;
     margin-bottom: 0.5rem;
   }
@@ -549,7 +547,7 @@ cite {
   background-color: var(--color-bg-green);
   color: var(--color-text-navy);
 
-  .section-title {
+  h2 {
     color: var(--color-paper);
     margin-bottom: 3rem;
     font-size: 3rem;
@@ -610,7 +608,6 @@ cite {
   }
 }
 
-/* --- Footer --- */
 footer {
   margin: 0 auto;
 
