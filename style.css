@@ -148,19 +148,17 @@ a {
   top: 0;
 }
 
-.site-header {
+header {
   background-color: var(--color-paper);
   padding: var(--space-md) var(--space-lg);
   border-bottom: 2px solid var(--color-text-navy);
 
-  .header-inner {
-    display: flex;
-    align-items: center;
-    max-width: 1400px;
-    margin: 0 auto;
-    flex-wrap: wrap;
-    gap: var(--space-md);
-  }
+  display: flex;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  gap: var(--space-md);
 
   .logo {
     font-size: 1.8rem;
