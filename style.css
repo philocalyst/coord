@@ -228,6 +228,11 @@ hr {
 /* --- Hero --- */
 .hero {
   background-color: var(--color-bg-green);
+  background-image: url("./media/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
   padding: 0 var(--space-lg);
   color: var(--color-paper);
   overflow: hidden;
