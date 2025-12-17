@@ -228,6 +228,7 @@ hr {
 /* --- Hero --- */
 .hero {
   background-color: var(--color-bg-green);
+
   background-image: url("./media/background.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -244,9 +245,31 @@ hr {
   align-items: end;
   min-height: 70vh;
 
+  img {
+    align-self: end;
+    justify-self: center;
+    padding-top: 5%;
+
+    max-height: 60vh;
+    filter: drop-shadow(15px 15px 0px rgba(0, 0, 0, 0.5));
+  }
+
+
   @media (min-width: 900px) {
     grid-template-columns: 0.8fr 1.2fr;
     gap: 2rem;
+
+    img {
+      order: 0;
+      max-height: 80vh;
+    }
+
+    .hero-text {
+      order: 0;
+
+    }
+
+
   }
 
   .hero-text {
@@ -297,17 +320,11 @@ hr {
       margin-bottom: 2rem;
       border-left: 4px dotted var(--color-brand-red);
       padding-left: 1rem;
+      -webkit-text-stroke: 2px black;
+      paint-order: stroke fill;
     }
   }
 
-  img {
-    align-self: end;
-    justify-self: center;
-
-    max-height: 80vh;
-    filter: drop-shadow(15px 15px 0px rgba(0, 0, 0, 0.5));
-    /* Push down slightly */
-  }
 }
 
 
