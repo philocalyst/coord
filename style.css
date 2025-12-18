@@ -248,11 +248,11 @@ hr {
   img {
     align-self: end;
     justify-self: center;
-    padding-top: 5%;
-    order: 2;
+    margin-top: 5%;
+    background: rgba(240, 240, 240, 0.8);
+    border-radius: 25%;
 
     max-height: 60vh;
-    filter: drop-shadow(15px 15px 0px rgba(0, 0, 0, 0.5));
   }
 
 
@@ -261,13 +261,11 @@ hr {
     gap: 2rem;
 
     img {
-      order: 0;
+      background: none;
       max-height: 80vh;
       padding-top: 15px;
-    }
-
-    .hero-text {
-      order: 0;
+      border-radius: 0%;
+      filter: none;
     }
 
   }
@@ -457,7 +455,7 @@ cite {
   }
 
   svg {
-    transform: translate(-23%, -32%);
+    transform: translate(-16%, -20%);
 
     /* Main State Styling */
     .state-shape {
@@ -487,7 +485,6 @@ cite {
     .city-label {
       font-family: var(--font-sans-serif);
       font-size: 10px;
-      fill: black;
       font-weight: bold;
       text-anchor: middle;
     }
