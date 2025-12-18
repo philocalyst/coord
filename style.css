@@ -527,11 +527,10 @@ cite {
   .principles-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 3rem;
+    gap: clamp(3rem, -3vw + 6rem, 5rem);
   }
 
   /* Of course, any card that is in the princples grid is a principle card by principle*/
-
   .principles-grid>div::before {
     content: attr(data-number);
     position: absolute;
