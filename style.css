@@ -249,6 +249,7 @@ hr {
     align-self: end;
     justify-self: center;
     padding-top: 5%;
+    order: 2;
 
     max-height: 60vh;
     filter: drop-shadow(15px 15px 0px rgba(0, 0, 0, 0.5));
@@ -262,13 +263,12 @@ hr {
     img {
       order: 0;
       max-height: 80vh;
+      padding-top: 15px;
     }
 
     .hero-text {
       order: 0;
-
     }
-
 
   }
 
@@ -444,6 +444,7 @@ cite {
 
   .css-map {
     background-color: var(--color-accent-blue);
+    overflow: hidden;
     width: 100%;
     aspect-ratio: 1;
     border-radius: 50%;
@@ -455,15 +456,49 @@ cite {
     position: relative;
   }
 
-  /* Simulate map shape roughly */
-  .css-map::after {
-    content: "";
-    position: absolute;
-    width: 60%;
-    height: 80%;
-    background: var(--color-bg-green);
-    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
-    opacity: 0.5;
+  svg {
+    transform: translate(-20%, -30%);
+
+    /* Main State Styling */
+    .state-shape {
+      fill: oklch(100% 0 0 / 0.8);
+      stroke: black;
+      stroke-width: 1px;
+    }
+
+    /* District 1 Highlight */
+    /* Approximating the shape from the provided map manually */
+    .district-shape {
+      fill: oklch(42% 0.1 155 / 0.7);
+      /* 50% opacity green */
+      stroke: oklch(42% 0.1 155);
+      /* Solid stroke for definition */
+      stroke-width: 1px;
+    }
+
+    /* Pins */
+    .city-pin {
+      fill: oklch(42% 0.1 155);
+      stroke: black;
+      stroke-width: 0.5px;
+    }
+
+    /* Labels */
+    .city-label {
+      font-family: 'Sentient-Bold', serif;
+      font-size: 10px;
+      fill: black;
+      font-weight: bold;
+      text-anchor: middle;
+    }
+
+    .district-label {
+      font-family: 'Sentient-Bold', serif;
+      font-size: 18px;
+      font-weight: bold;
+      fill: black;
+      text-anchor: middle;
+    }
   }
 
   h2 {
