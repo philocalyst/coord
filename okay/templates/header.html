@@ -1,0 +1,16 @@
+◊(use 'expressions.constants)
+<a href="#main-content" class="skip-link">Skip to Main Content</a>
+
+<header>
+  <a href="#" class="logo">McCord <span class="logo-sub">for Congress</span></a>
+  <div class="decoration-line"></div>
+  <nav>
+    <ul>
+      ◊(for [item nav-items])«
+      <li><a href="◊(:href item)">◊(:text item)</a></li>
+      »
+    </ul>
+    <a href="◊donate-url" role="button" class="btn-donate">DONATE</a>
+  </nav>
+</header>
+<hr>
