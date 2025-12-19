@@ -8,6 +8,9 @@
 (def district "GA 1st District")
 (def tagline "America First, for Real People")
 (def subtitle "Washington is out of touch with rural Georgia, and Michael is running to fix it.")
+(def global-desc "Washington is out of touch with rural Georgia.")
+(def site-author "Philocalyst")
+(def lang "en")
 
 (def phone "(912) 483-8565")
 (def email "Michael@McCordforGA.com")
