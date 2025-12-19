@@ -1,0 +1,15 @@
+◊(require '[expressions.constants :refer [site-title district]]
+'[expressions.meta :refer [embed]])
+◊(def head)«
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="gambetta.css">
+<link rel="stylesheet" href="sentient.css">
+»
+◊(def body)«
+◊(include "header.html")
+<main id="main-content">
+  ◊content
+</main>
+◊(include "footer.html")
+»
+◊(embed "skeleton.html" {'head head 'content body})
