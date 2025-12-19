@@ -1,2 +1,4 @@
 media/.DS_Store
 okay/.build
+okay/public
+okay/build.ninja
