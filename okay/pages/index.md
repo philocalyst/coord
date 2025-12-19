@@ -5,7 +5,7 @@ template: campaign.html
 ◊(use 'expressions.constants)
 
 <section class="hero">
-  <img src="./media/portrait.png" alt="Michael McCord Candidate">
+  <img src="/images/portrait.png" alt="Michael McCord Candidate">
 
   <div class="hero-text">
     <h1>
@@ -124,11 +124,11 @@ template: campaign.html
     </div>
     <div class="bio-images">
       <figure class="rotate-left">
-        <img src="./media/micheal-campaigning.webp" alt="McCord working with team">
+        <img src="/images/micheal-campaigning.webp" alt="McCord working with team">
         <figcaption class="caption">McCord on the campaign trail</figcaption>
       </figure>
       <figure class="rotate-right">
-        <img src="./media/micheal-with-kid.webp" alt="McCord speaking to voters">
+        <img src="/images/micheal-with-kid.webp" alt="McCord speaking to voters">
         <figcaption class="caption">Listening to District 1 voters</figcaption>
       </figure>
     </div>
