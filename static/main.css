@@ -921,3 +921,71 @@ details[open] .icon-toggle::after {
     transform: translateY(0);
   }
 }
+
+/* --- Privacy Policy Specific Styles --- */
+
+.legal-text-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.legal-content {
+  font-family: var(--font-sans-serif);
+  line-height: 1.8;
+  color: var(--color-text-navy);
+}
+
+.legal-block {
+  margin-bottom: 3rem;
+}
+
+.legal-block h3 {
+  font-family: var(--font-serif);
+  color: var(--color-brand-red);
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--color-text-navy);
+}
+
+/* Indentation Logic */
+.policy-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.policy-list li {
+  margin-bottom: 1.2rem;
+  padding-left: 2rem;
+  /* The main indent */
+  position: relative;
+}
+
+.policy-list li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--color-accent-blue);
+}
+
+.legal-address {
+  font-style: normal;
+  background-color: var(--color-paper-dim);
+  border: 1px solid var(--color-text-navy);
+  padding: 1.5rem;
+  display: inline-block;
+  box-shadow: 4px 4px 0 var(--color-accent-blue);
+}
+
+.legal-address a {
+  font-weight: bold;
+  color: var(--color-brand-red);
+}
+
+/* Ensure headings in the legal section match site theme */
+#privacy-policy h1 {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
