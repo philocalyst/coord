@@ -1,0 +1,192 @@
+transformers = transformers/preprocess.clj$ transformers/markdown.clj$ transformers/embed.clj$ transformers/highlight.clj$ transformers/md_html_links.clj$ transformers/redirect.clj$ transformers/toc.clj$ transformers/content.clj
+transform-map = '{}'
+all-frontmatter = .build/all-frontmatter.json
+builddir = .build
+
+build build.clj: phony ./.build/defaults/build.clj
+build sass/minima/_syntax-highlighting.scss: phony ./.build/defaults/sass/minima/_syntax-highlighting.scss
+build expressions/pages.clj: phony ./.build/defaults/expressions/pages.clj
+build transformers/standalone/generate_redirect.clj: phony ./.build/defaults/transformers/standalone/generate_redirect.clj
+build transformers/redirect.clj: phony ./.build/defaults/transformers/redirect.clj
+build expressions/transform_sorter.clj: phony ./.build/defaults/expressions/transform_sorter.clj
+build transformers/toc.clj: phony ./.build/defaults/transformers/toc.clj
+build expressions/example.clj: phony ./.build/defaults/expressions/example.clj
+build expressions/ninja.clj: phony ./.build/defaults/expressions/ninja.clj
+build transformers/md_html_links.clj: phony ./.build/defaults/transformers/md_html_links.clj
+build sass/minima: phony ./.build/defaults/sass/minima
+build expressions/meta.clj: phony ./.build/defaults/expressions/meta.clj
+build sass: phony ./.build/defaults/sass
+build expressions/default_build.clj: phony ./.build/defaults/expressions/default_build.clj
+build expressions/utils.clj: phony ./.build/defaults/expressions/utils.clj
+build sass/minima/_base.scss: phony ./.build/defaults/sass/minima/_base.scss
+build expressions/shortcodes.clj: phony ./.build/defaults/expressions/shortcodes.clj
+build sass/minima.scss: phony ./.build/defaults/sass/minima.scss
+build transformers/highlight.clj: phony ./.build/defaults/transformers/highlight.clj
+build expressions/html.clj: phony ./.build/defaults/expressions/html.clj
+build transformers/standalone/split_sass_dependencies.clj: phony ./.build/defaults/transformers/standalone/split_sass_dependencies.clj
+build transformers/preprocess.clj: phony ./.build/defaults/transformers/preprocess.clj
+build .gitignore: phony ./.build/defaults/.gitignore
+build expressions/title.clj: phony ./.build/defaults/expressions/title.clj
+build transformers/markdown.clj: phony ./.build/defaults/transformers/markdown.clj
+build transformers/content.clj: phony ./.build/defaults/transformers/content.clj
+build transformers/embed.clj: phony ./.build/defaults/transformers/embed.clj
+build sass/minima/_layout.scss: phony ./.build/defaults/sass/minima/_layout.scss
+build transformers: phony ./.build/defaults/transformers
+build transformers/standalone: phony ./.build/defaults/transformers/standalone
+build expressions: phony ./.build/defaults/expressions
+
+rule transform
+  command = /Users/philocalyst/Downloads/flowerr transform < $in --depfile $in.d --out-file $out --transform-map $transform-map --all-frontmatter $all-frontmatter --raw-output $transformers > $out
+  description = run all transformers on $page
+rule redirect
+  command = echo $target | /Users/philocalyst/Downloads/flowerr transform --standalone --raw-input --raw-output --depfile $depfile --out-file $out transformers/standalone/generate_redirect.clj >  $out
+rule join-frontmatter
+  command = /Users/philocalyst/Downloads/flowerr join-frontmatter $out $in
+  restat = true
+  description = join all page frontmatter into a cache
+rule ninja-meta
+  restat = true
+  command = /Users/philocalyst/Downloads/flowerr configure $settings
+  description = rebuild build.ninja itself
+rule mkdir
+  command = mkdir -p .build
+  description = create build dir
+rule link
+  command = ln -f $in $out
+  description = link $in into build dir
+rule frontmatter
+  command = /Users/philocalyst/Downloads/flowerr split-frontmatter --filename $in < $in > $out
+rule sass
+  command = sass --quiet $in $out; /Users/philocalyst/Downloads/flowerr transform transformers/standalone/split_sass_dependencies.clj --standalone --raw-output --source-file=$out <$source-map >$depfile
+  description = compile Sass file $in to CSS
+
+build .build/pages/404.html.json: frontmatter pages/404.html | /Users/philocalyst/Downloads/flowerr
+build .build/pages/index.md.json: frontmatter pages/index.md | /Users/philocalyst/Downloads/flowerr
+build public/404.html: transform .build/pages/404.html.json | transformers/embed.clj transformers/toc.clj transformers/redirect.clj transformers/md_html_links.clj transformers/markdown.clj transformers/preprocess.clj transformers/highlight.clj transformers/content.clj public/minima.css .build/all-frontmatter.json
+  page = pages/404.html
+  tmpfile = '.build/pages/404.html.transformed.json'
+  depfile = .build/pages/404.html.json.d
+build public/index.html: transform .build/pages/index.md.json | transformers/embed.clj transformers/toc.clj transformers/redirect.clj transformers/md_html_links.clj transformers/markdown.clj transformers/preprocess.clj transformers/highlight.clj transformers/content.clj public/minima.css .build/all-frontmatter.json
+  page = pages/index.md
+  tmpfile = '.build/pages/index.md.transformed.json'
+  depfile = .build/pages/index.md.json.d
+build public/fonts/Gambetta-Regular.woff: link static/fonts/Gambetta-Regular.woff
+build public/fonts/Gambetta-Italic.woff: link static/fonts/Gambetta-Italic.woff
+build public/fonts/Sentient-Regular.woff2: link static/fonts/Sentient-Regular.woff2
+build public/fonts/Gambetta-Semibold.ttf: link static/fonts/Gambetta-Semibold.ttf
+build public/gambetta.css: link static/gambetta.css
+build public/fonts/Gambetta-Regular.eot: link static/fonts/Gambetta-Regular.eot
+build public/images/13.jpeg.avif: link static/images/13.jpeg.avif
+build public/fonts/Gambetta-Italic.eot: link static/fonts/Gambetta-Italic.eot
+build public/fonts/Gambetta-BoldItalic.ttf: link static/fonts/Gambetta-BoldItalic.ttf
+build public/fonts/Sentient-Variable.woff: link static/fonts/Sentient-Variable.woff
+build public/fonts/Sentient-Italic.woff2: link static/fonts/Sentient-Italic.woff2
+build public/fonts/Gambetta-Medium.ttf: link static/fonts/Gambetta-Medium.ttf
+build public/fonts: mkdir static/fonts
+build public/fonts/Sentient-Bold.ttf: link static/fonts/Sentient-Bold.ttf
+build public/fonts/Sentient-MediumItalic.ttf: link static/fonts/Sentient-MediumItalic.ttf
+build public/fonts/Gambetta-VariableItalic.woff: link static/fonts/Gambetta-VariableItalic.woff
+build public/fonts/Gambetta-Semibold.eot: link static/fonts/Gambetta-Semibold.eot
+build public/fonts/Gambetta-SemiboldItalic.woff2: link static/fonts/Gambetta-SemiboldItalic.woff2
+build public/fonts/Sentient-Extralight.ttf: link static/fonts/Sentient-Extralight.ttf
+build public/fonts/Gambetta-Light.woff: link static/fonts/Gambetta-Light.woff
+build public/favicon.jpg: link static/favicon.jpg
+build public/fonts/Gambetta-BoldItalic.eot: link static/fonts/Gambetta-BoldItalic.eot
+build public/fonts/Gambetta-MediumItalic.woff2: link static/fonts/Gambetta-MediumItalic.woff2
+build public/fonts/Sentient-Light.ttf: link static/fonts/Sentient-Light.ttf
+build public/fonts/Gambetta-Medium.eot: link static/fonts/Gambetta-Medium.eot
+build public/fonts/Sentient-LightItalic.woff: link static/fonts/Sentient-LightItalic.woff
+build public/fonts/Gambetta-Bold.woff2: link static/fonts/Gambetta-Bold.woff2
+build public/fonts/Sentient-BoldItalic.woff2: link static/fonts/Sentient-BoldItalic.woff2
+build public/fonts/Gambetta-LightItalic.ttf: link static/fonts/Gambetta-LightItalic.ttf
+build public/fonts/Sentient-Medium.woff2: link static/fonts/Sentient-Medium.woff2
+build public/fonts/Sentient-MediumItalic.eot: link static/fonts/Sentient-MediumItalic.eot
+build public/fonts/Sentient-Extralight.eot: link static/fonts/Sentient-Extralight.eot
+build public/fonts/Sentient-ExtralightItalic.woff: link static/fonts/Sentient-ExtralightItalic.woff
+build public/fonts/Sentient-ExtralightItalic.woff2: link static/fonts/Sentient-ExtralightItalic.woff2
+build public/fonts/Gambetta-Variable.ttf: link static/fonts/Gambetta-Variable.ttf
+build public/fonts/Sentient-Medium.woff: link static/fonts/Sentient-Medium.woff
+build public/fonts/Sentient-BoldItalic.woff: link static/fonts/Sentient-BoldItalic.woff
+build public/fonts/Sentient-Light.eot: link static/fonts/Sentient-Light.eot
+build public/fonts/Gambetta-MediumItalic.woff: link static/fonts/Gambetta-MediumItalic.woff
+build public/fonts/Sentient-VariableItalic.ttf: link static/fonts/Sentient-VariableItalic.ttf
+build public/fonts/Gambetta-Bold.woff: link static/fonts/Gambetta-Bold.woff
+build public/fonts/Sentient-LightItalic.woff2: link static/fonts/Sentient-LightItalic.woff2
+build public/images/micheal-campaigning.webp: link static/images/micheal-campaigning.webp
+build public/fonts/Gambetta-LightItalic.eot: link static/fonts/Gambetta-LightItalic.eot
+build public/images/portrait.png: link static/images/portrait.png
+build public/fonts/Gambetta-Light.woff2: link static/fonts/Gambetta-Light.woff2
+build public/fonts/Gambetta-SemiboldItalic.woff: link static/fonts/Gambetta-SemiboldItalic.woff
+build public/fonts/Sentient-Regular.ttf: link static/fonts/Sentient-Regular.ttf
+build public/fonts/Gambetta-Variable.eot: link static/fonts/Gambetta-Variable.eot
+build public/fonts/Gambetta-VariableItalic.woff2: link static/fonts/Gambetta-VariableItalic.woff2
+build public/fonts/Sentient-VariableItalic.eot: link static/fonts/Sentient-VariableItalic.eot
+build public/fonts/Sentient-Italic.woff: link static/fonts/Sentient-Italic.woff
+build public/fonts/Sentient-Italic.ttf: link static/fonts/Sentient-Italic.ttf
+build public/main.css: link static/main.css
+build public/fonts/Sentient-Variable.woff2: link static/fonts/Sentient-Variable.woff2
+build public/sentient.css: link static/sentient.css
+build public/fonts/Gambetta-SemiboldItalic.ttf: link static/fonts/Gambetta-SemiboldItalic.ttf
+build public/fonts/Sentient-Regular.eot: link static/fonts/Sentient-Regular.eot
+build public/fonts/Sentient-Regular.woff: link static/fonts/Sentient-Regular.woff
+build public/material-pygments.css: link static/material-pygments.css
+build public/fonts/Gambetta-Italic.woff2: link static/fonts/Gambetta-Italic.woff2
+build public/fonts/Gambetta-Regular.woff2: link static/fonts/Gambetta-Regular.woff2
+build public/fonts/Gambetta-MediumItalic.ttf: link static/fonts/Gambetta-MediumItalic.ttf
+build public/fonts/Gambetta-Bold.ttf: link static/fonts/Gambetta-Bold.ttf
+build public/fonts/Sentient-VariableItalic.woff: link static/fonts/Sentient-VariableItalic.woff
+build public/fonts/Sentient-Italic.eot: link static/fonts/Sentient-Italic.eot
+build public/fonts/Sentient-BoldItalic.ttf: link static/fonts/Sentient-BoldItalic.ttf
+build public/fonts/Sentient-Medium.ttf: link static/fonts/Sentient-Medium.ttf
+build public/fonts/Gambetta-Variable.woff: link static/fonts/Gambetta-Variable.woff
+build public/fonts/Gambetta-Semibold.woff2: link static/fonts/Gambetta-Semibold.woff2
+build public/fonts/Sentient-ExtralightItalic.ttf: link static/fonts/Sentient-ExtralightItalic.ttf
+build public/fonts/Gambetta-SemiboldItalic.eot: link static/fonts/Gambetta-SemiboldItalic.eot
+build public/fonts/Gambetta-LightItalic.woff: link static/fonts/Gambetta-LightItalic.woff
+build public/pygments-light.css: link static/pygments-light.css
+build public/images/12.jpg.avif: link static/images/12.jpg.avif
+build public/fonts/Gambetta-BoldItalic.woff2: link static/fonts/Gambetta-BoldItalic.woff2
+build public/images/micheal-with-kid.webp: link static/images/micheal-with-kid.webp
+build public/fonts/Gambetta-Bold.eot: link static/fonts/Gambetta-Bold.eot
+build public/fonts/Gambetta-Medium.woff2: link static/fonts/Gambetta-Medium.woff2
+build public/fonts/Sentient-Light.woff: link static/fonts/Sentient-Light.woff
+build public/fonts/Gambetta-MediumItalic.eot: link static/fonts/Gambetta-MediumItalic.eot
+build public/fonts/Sentient-LightItalic.ttf: link static/fonts/Sentient-LightItalic.ttf
+build public/fonts/Sentient-Bold.woff2: link static/fonts/Sentient-Bold.woff2
+build public/fonts/Sentient-BoldItalic.eot: link static/fonts/Sentient-BoldItalic.eot
+build public/fonts/Sentient-MediumItalic.woff2: link static/fonts/Sentient-MediumItalic.woff2
+build public/fonts/Sentient-Medium.eot: link static/fonts/Sentient-Medium.eot
+build public/fonts/Gambetta-Light.ttf: link static/fonts/Gambetta-Light.ttf
+build public/fonts/Sentient-Extralight.woff: link static/fonts/Sentient-Extralight.woff
+build public/images: mkdir static/images
+build public/fonts/Sentient-ExtralightItalic.eot: link static/fonts/Sentient-ExtralightItalic.eot
+build public/fonts/Sentient-Extralight.woff2: link static/fonts/Sentient-Extralight.woff2
+build public/fonts/Gambetta-VariableItalic.ttf: link static/fonts/Gambetta-VariableItalic.ttf
+build public/fonts/Sentient-MediumItalic.woff: link static/fonts/Sentient-MediumItalic.woff
+build public/fonts/Sentient-Bold.woff: link static/fonts/Sentient-Bold.woff
+build public/fonts/Sentient-Light.woff2: link static/fonts/Sentient-Light.woff2
+build public/fonts/Gambetta-Medium.woff: link static/fonts/Gambetta-Medium.woff
+build public/fonts/Sentient-Variable.ttf: link static/fonts/Sentient-Variable.ttf
+build public/fonts/Gambetta-BoldItalic.woff: link static/fonts/Gambetta-BoldItalic.woff
+build public/fonts/Sentient-LightItalic.eot: link static/fonts/Sentient-LightItalic.eot
+build public/fonts/Gambetta-LightItalic.woff2: link static/fonts/Gambetta-LightItalic.woff2
+build public/fonts/Gambetta-Light.eot: link static/fonts/Gambetta-Light.eot
+build public/fonts/Gambetta-Semibold.woff: link static/fonts/Gambetta-Semibold.woff
+build public/main.js: link static/main.js
+build public/fonts/Gambetta-VariableItalic.eot: link static/fonts/Gambetta-VariableItalic.eot
+build public/fonts/Gambetta-Regular.ttf: link static/fonts/Gambetta-Regular.ttf
+build public/fonts/Gambetta-Variable.woff2: link static/fonts/Gambetta-Variable.woff2
+build public/fonts/Gambetta-Italic.ttf: link static/fonts/Gambetta-Italic.ttf
+build public/fonts/Sentient-Variable.eot: link static/fonts/Sentient-Variable.eot
+build public/images/background.png: link static/images/background.png
+build public/fonts/Sentient-VariableItalic.woff2: link static/fonts/Sentient-VariableItalic.woff2
+build public/minima.css: sass ./.build/defaults/sass/minima.scss
+  source-map = public/minima.css.map
+  depfile = .build/sass/minima.scss.d
+build .build/all-frontmatter.json: join-frontmatter .build/pages/404.html.json .build/pages/index.md.json | /Users/philocalyst/Downloads/flowerr
+build build.ninja: ninja-meta flower.edn build.clj .build/all-frontmatter.json /Users/philocalyst/Downloads/flowerr sass pages pages transformers static static/fonts static static/images
+  generator = true
+  depfile = .build/build.clj.d
+  settings = '--set' 'drafts=false'
+build .build: mkdir 
+
