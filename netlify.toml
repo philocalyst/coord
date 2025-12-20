@@ -2,7 +2,7 @@
   # 1. Install ninja-build 
   # 2. Make sure the flower binary is executable
   # 3. Run the build
-  command = "pip install ninja && curl -L https://github.com/jyn514/flower/actions/runs/20011302478/artifacts/4791772271 -o flower && chmod +x ./flower && ./flower build"
+  command = "pip install ninja && ./flower build"
   
   # Publish from the out directory
   publish = "public"
