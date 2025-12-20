@@ -1,0 +1,9 @@
+[build]
+  # 1. Install ninja-build 
+  # 2. Make sure the flower binary is executable
+  # 3. Run the build
+  command = "apt-get update && apt-get install -y ninja-build && chmod +x ./flower && ./flower build"
+  
+  # Publish from the out directory
+  publish = "public"
+
