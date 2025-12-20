@@ -2,7 +2,7 @@
   # 1. Install ninja-build 
   # 2. Make sure the flower binary is executable
   # 3. Run the build
-  command = "pm install -g sass && pip install ninja && ./flower build"
+  command = "npm install -g sass && pip install ninja && ./flower build"
   
   # Publish from the out directory
   publish = "public"
