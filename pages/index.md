@@ -144,8 +144,7 @@ template: campaign.html
 
 <!-- ISSUES GRID -->
 <section class="issues section-padding">
-  <div class="container">
-    <h2 class="center">"America First for Real People" Platform</h2>
+   <h2 class="center">"America First for Real People" Platform</h2>
     <div class="issues-grid">
       <!-- Environment -->
       <div class="issue-card">
@@ -193,6 +192,5 @@ template: campaign.html
         </div>
       </div>
     </div>
-  </div>
 </section>
 
