@@ -1,5 +1,5 @@
 ---
-title: null
+title: "McCord for Congress"
 template: campaign.html
 ---
 ◊(use 'expressions.constants)
