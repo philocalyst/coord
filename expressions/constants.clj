@@ -22,5 +22,5 @@
 
 (def nav-items
   [{:href "#meet-michael" :text "Meet Michael"}
-   {:href "#platform" :text "Platform"}
+   {:href "/platform.html" :text "Platform"}
    {:href "#volunteer" :text "Volunteer"}])
