@@ -776,8 +776,8 @@ p {
 /* --- Policy Accordion Section --- */
 
 .accordion-wrapper {
-  max-width: 800px;
   margin: 0 auto;
+  padding: 0 5%;
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
@@ -842,8 +842,8 @@ p {
     }
 
     .icon-toggle {
-      width: 24px;
-      height: 24px;
+      width: 1.3rem;
+      height: 1.3rem;
       position: relative;
       flex-shrink: 0;
 
