@@ -772,3 +772,152 @@ footer {
 p {
   font-family: var(--font-sans-serif);
 }
+
+/* --- Policy Accordion Section --- */
+
+.accordion-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+details {
+  background-color: var(--color-paper);
+  border: 2px solid var(--color-paper);
+  /* Border matches bg initially */
+  color: var(--color-text-navy);
+  transition: all 0.2s ease;
+  box-shadow: 4px 4px 0 var(--color-text-navy);
+}
+
+details[open] {
+  border-color: var(--color-brand-red);
+  box-shadow: 8px 8px 0 var(--color-text-navy);
+}
+
+summary {
+  list-style: none;
+  /* Hide default marker (Standard) */
+  cursor: pointer;
+  padding: 1.5rem;
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  transition: background-color 0.2s ease;
+}
+
+/* Hide default marker (Safari/Webkit) */
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary:hover {
+  background-color: var(--color-paper-dim);
+}
+
+/* Custom styling for the title */
+.summary-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.policy-number {
+  color: var(--color-brand-red);
+  font-family: var(--font-sans-serif);
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+
+/* --- The Custom Toggle Icon (+) --- */
+.icon-toggle {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* Horizontal line */
+.icon-toggle::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--color-text-navy);
+  transform: translateY(-50%);
+  transition: transform 0.3s ease;
+}
+
+/* Vertical line */
+.icon-toggle::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 3px;
+  height: 100%;
+  background-color: var(--color-text-navy);
+  transform: translateX(-50%);
+  transition: transform 0.3s ease;
+}
+
+/* Rotate and hide vertical line when open */
+details[open] .icon-toggle::before {
+  transform: translateY(-50%) rotate(180deg);
+  background-color: var(--color-brand-red);
+}
+
+details[open] .icon-toggle::after {
+  transform: translateX(-50%) rotate(90deg);
+  background-color: var(--color-brand-red);
+}
+
+/* --- Content Styling --- */
+.details-content {
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  border-top: 1px dotted var(--color-text-navy);
+  margin-top: 0;
+
+  /* Simple fade in animation */
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.details-content p {
+  margin-top: 1rem;
+  max-width: 65ch;
+}
+
+.details-content ul {
+  margin-top: 1rem;
+  margin-left: 1.5rem;
+  list-style-type: square;
+}
+
+.details-content li {
+  margin-bottom: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.details-content strong {
+  color: var(--color-bg-green);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
