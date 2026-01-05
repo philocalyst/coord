@@ -60,8 +60,18 @@ rule sass
   command = sass --quiet $in $out; /Users/philocalyst/Downloads/flowerr transform transformers/standalone/split_sass_dependencies.clj --standalone --raw-output --source-file=$out <$source-map >$depfile
   description = compile Sass file $in to CSS
 
+build .build/pages/platform.md.json: frontmatter pages/platform.md | /Users/philocalyst/Downloads/flowerr
+build .build/pages/privacy-policy.md.json: frontmatter pages/privacy-policy.md | /Users/philocalyst/Downloads/flowerr
 build .build/pages/404.html.json: frontmatter pages/404.html | /Users/philocalyst/Downloads/flowerr
 build .build/pages/index.md.json: frontmatter pages/index.md | /Users/philocalyst/Downloads/flowerr
+build public/platform.html: transform .build/pages/platform.md.json | transformers/embed.clj transformers/toc.clj transformers/redirect.clj transformers/md_html_links.clj transformers/markdown.clj transformers/preprocess.clj transformers/highlight.clj transformers/content.clj public/minima.css .build/all-frontmatter.json
+  page = pages/platform.md
+  tmpfile = '.build/pages/platform.md.transformed.json'
+  depfile = .build/pages/platform.md.json.d
+build public/privacy-policy.html: transform .build/pages/privacy-policy.md.json | transformers/embed.clj transformers/toc.clj transformers/redirect.clj transformers/md_html_links.clj transformers/markdown.clj transformers/preprocess.clj transformers/highlight.clj transformers/content.clj public/minima.css .build/all-frontmatter.json
+  page = pages/privacy-policy.md
+  tmpfile = '.build/pages/privacy-policy.md.transformed.json'
+  depfile = .build/pages/privacy-policy.md.json.d
 build public/404.html: transform .build/pages/404.html.json | transformers/embed.clj transformers/toc.clj transformers/redirect.clj transformers/md_html_links.clj transformers/markdown.clj transformers/preprocess.clj transformers/highlight.clj transformers/content.clj public/minima.css .build/all-frontmatter.json
   page = pages/404.html
   tmpfile = '.build/pages/404.html.transformed.json'
@@ -118,6 +128,7 @@ build public/images/portrait.png: link static/images/portrait.png
 build public/fonts/Gambetta-Light.woff2: link static/fonts/Gambetta-Light.woff2
 build public/fonts/Gambetta-SemiboldItalic.woff: link static/fonts/Gambetta-SemiboldItalic.woff
 build public/fonts/Sentient-Regular.ttf: link static/fonts/Sentient-Regular.ttf
+build public/favicon.png: link static/favicon.png
 build public/fonts/Gambetta-Variable.eot: link static/fonts/Gambetta-Variable.eot
 build public/fonts/Gambetta-VariableItalic.woff2: link static/fonts/Gambetta-VariableItalic.woff2
 build public/fonts/Sentient-VariableItalic.eot: link static/fonts/Sentient-VariableItalic.eot
@@ -183,7 +194,7 @@ build public/fonts/Sentient-VariableItalic.woff2: link static/fonts/Sentient-Var
 build public/minima.css: sass ./.build/defaults/sass/minima.scss
   source-map = public/minima.css.map
   depfile = .build/sass/minima.scss.d
-build .build/all-frontmatter.json: join-frontmatter .build/pages/404.html.json .build/pages/index.md.json | /Users/philocalyst/Downloads/flowerr
+build .build/all-frontmatter.json: join-frontmatter .build/pages/platform.md.json .build/pages/privacy-policy.md.json .build/pages/404.html.json .build/pages/index.md.json | /Users/philocalyst/Downloads/flowerr
 build build.ninja: ninja-meta flower.edn build.clj .build/all-frontmatter.json /Users/philocalyst/Downloads/flowerr sass pages pages transformers static static/fonts static static/images
   generator = true
   depfile = .build/build.clj.d
