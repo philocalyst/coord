@@ -4,7 +4,6 @@ template: campaign.html
 ---
 ◊(use 'expressions.constants)
 
-<!-- DETAILED POLICY ACCORDIONS -->
 <section id="policy-details" class="section-padding section-dark">
   <div class="container">
     <div class="policy-header center">
